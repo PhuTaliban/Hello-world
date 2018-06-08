@@ -5,7 +5,7 @@ begin
 	declare soluongban int(11);
 	declare slton int(11);
 	set soluongnhap = select soluong from ct_sanpham where id_sp = id_sp1;
-	set soluongban = select sum(so_luong) from ct_hoadon where id_sp = id_sp1;
+	set soluongban = select sum(so_luong) from ct_hoadon, ct_sanpham where ct_sanpham.id = ct_hoadon.id_ctsanpham and id_sp = id_sp1;
 	set slton = soluongnhap - soluongban;
 	begin
 		update ct_sanpham 
@@ -24,7 +24,7 @@ begin
 	declare @soluongban int(11);
 	declare @slton int(11);
 	set @soluongnhap = select soluong from ct_sanpham where id_sp = @id_sp1;
-	set @soluongban = select sum(so_luong) from ct_hoadon where id_sp = @id_sp1;
+	set @soluongban = select sum(so_luong) from from ct_hoadon, ct_sanpham where ct_sanpham.id = ct_hoadon.id_ctsanpham and id_sp = id_sp1;
 	set @slton = soluongnhap - soluongban;
 	begin
 		update ct_sanpham 
